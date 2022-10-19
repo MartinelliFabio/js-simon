@@ -1,0 +1,44 @@
+:root {
+    --light-rose: #eaac8b;
+    --rose: #E56B6F;
+    --dark-rose: #B56576;
+    --purple: #6D597A;
+    --blue: #355070;
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--light-rose);
+}
+
+nav {
+    background-color: var(--purple);
+    width: 100%;
+    height: 80px;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.container-numeri {
+    width: 850px;
+    height: 460px;
+    background-color: var(--purple);
+    border-radius: 15px;
+    margin-top: 150px;
+}
+
+.form {
+    width: 55%;
+    margin: 0 auto;
+}
+
+button {
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-weight: bold;
+    background-color: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+}

@@ -35,7 +35,8 @@ function timerNumeri () {
 }
 
 const pushaInputHTML = document.getElementById('pusha-input');
-const arrInputUtente = [];
+let arrInputUtente = [];
+const outputNumeriHTML = document.getElementById('output-numeri');
 
 function pushaNumero() {
 
@@ -46,7 +47,6 @@ function pushaNumero() {
     } else if(arrInputUtente.length < numeriDiNumeri) {
         arrInputUtente.push(inputNumber);
         console.log(arrInputUtente);
-        const outputNumeriHTML = document.getElementById('output-numeri');
         outputNumeriHTML.innerHTML = 'Hai inserito il numero: ' + arrInputUtente;
     }
     input.value = '';
@@ -82,6 +82,10 @@ function generaNumeri() {
     createNumbers();
     document.getElementById("numeri").classList.remove('invisible');
     document.getElementById("numeri").classList.add('visible');
+    outputNumeriHTML.innerHTML = '';
+    risultatoHTML.innerHTML = '';
+    arrInputUtente = [];
+    contatore = 0;
 }
 generaNumeriHTML.addEventListener('click', () => {
     generaNumeri();
