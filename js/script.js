@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------------------------------- */
 
 // Creo l'array per raccogliere i numeri randomici
-const numeri = [];
+let numeri = [];
 const numeriDiNumeri = 5; // Creo la variabile assegnando il numero di numeri casuali da visualizzare
 
 // Uso un ciclo per generare i numeri e popolarli nell'array
@@ -31,7 +31,7 @@ const timer = setInterval(timerNumeri, 3000);
 
 // Funzione per far scomparire il div#numeri 
 function timerNumeri () {
-    document.getElementById("numeri").style.display = "none";
+    document.getElementById("numeri").classList.add('invisible');
 }
 
 const pushaInputHTML = document.getElementById('pusha-input');
@@ -39,14 +39,16 @@ const arrInputUtente = [];
 
 function pushaNumero() {
 
-    let inputNumber = document.getElementById('input').value;
+    let inputNumber = parseInt(document.getElementById('input').value);
     
-    if(arrInputUtente.length < numeriDiNumeri) {
+    if(input.value == "") {
+        alert('Devi Scrivere qualcosa');
+    } else if(arrInputUtente.length < numeriDiNumeri) {
         arrInputUtente.push(inputNumber);
         console.log(arrInputUtente);
         const outputNumeriHTML = document.getElementById('output-numeri');
         outputNumeriHTML.innerHTML = 'Hai inserito il numero: ' + arrInputUtente;
-    }   
+    }
     input.value = '';
 }
 pushaInputHTML.addEventListener('click', () => {
@@ -54,10 +56,33 @@ pushaInputHTML.addEventListener('click', () => {
 })
 
 const verificaInputHTML = document.getElementById('verifica-input');
+const risultatoHTML = document.getElementById('risultato');
+let contatore = 0;
 
 function verificaNumeri() {
-    
+    for(let i = 0; i < numeriDiNumeri; i++) {
+        if(arrInputUtente.includes(numeri[i])) {
+            risultatoHTML.innerHTML = 'Hai indovinato tutti i numeri!';
+        } else {
+            contatore++;
+            console.log('no');
+            risultatoHTML.innerHTML = 'Hai mancato: ' + contatore + ' numeri!';
+        }
+    }
 }
 verificaInputHTML.addEventListener('click', () => {
     verificaNumeri();
-})
+});
+
+
+const generaNumeriHTML = document.getElementById('genera-numeri')
+
+function generaNumeri() {
+    numeri = [];
+    createNumbers();
+    document.getElementById("numeri").classList.remove('invisible');
+    document.getElementById("numeri").classList.add('visible');
+}
+generaNumeriHTML.addEventListener('click', () => {
+    generaNumeri();
+});
